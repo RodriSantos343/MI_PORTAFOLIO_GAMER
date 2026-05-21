@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamer Setup Portfolio</title>
+    
+    <!-- Enlace al archivo CSS externo -->
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- Scripts para Model Viewer (3D) y Rive (Animación) -->
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+    <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
+</head>
+<body class="theme-dark"> <!-- Clase inicial para el tema oscuro -->
+
+    <!-- BOTÓN FLOTANTE PARA CAMBIO DE TEMA (CLARO/OSCURO) -->
+    <button id="btn-tema" class="theme-toggle-btn">Modo Claro ☀️</button>
+
+    <div class="portfolio-container">
+
+        <!-- HEADER: Perfil del Alumno -->
+        <header>
+            <div class="avatar-container">
+                <img src="PERFIL.jpg" alt="Avatar Alumno" class="avatar">
+            </div>
+            <h1>RODRIGO DAVID SANTOS CHALE</h1>
+            <div class="tag">Developer & 3D Modeler Student</div>
+        </header>
+
+        <!-- SECCIÓN: Sobre Mí -->
+        <section id="about">
+            <h2>Sobre Mí</h2>
+            <p style="line-height: 1.6; margin-top: 15px;">
+                ¡Hola! Soy estudiante y entusiasta del desarrollo de software y la graficación 3D. Me apasiona construir entornos inmersivos y optimizados, desde la lógica del código hasta el el modelado de componentes de hardware. Este portafolio simula mi entorno ideal: un setup gamer funcional adaptado para la web.
+            </p>
+        </section>
+
+        <!-- SECCIÓN: Habilidades -->
+        <section id="skills">
+            <h2>Habilidades Técnicas</h2>
+            <div class="skills-grid">
+                <div class="skill-card"><h4>Blender 3D</h4></div>
+                <div class="skill-card"><h4>Three.js / WebGL</h4></div>
+                <div class="skill-card"><h4>Node.js</h4></div>
+                <div class="skill-card"><h4>Flutter</h4></div>
+                <div class="skill-card"><h4>HTML5 & CSS3</h4></div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Proyectos -->
+        <section id="projects">
+            <h2>Mi Setup de Proyectos</h2>
+            <div class="projects-grid">
+                
+                <!-- PROYECTO 3D: El Monitor de Blender con Controles JS -->
+                <div class="project-card">
+                    <div class="canvas-container">
+                        <!-- src corregido apuntando a la nueva estructura de carpetas -->
+                        <model-viewer 
+                            id="modelo-setup"
+                            src="assets/3d/SETUP_GAMER.glb" 
+                            alt="Mi Setup Gamer 3D" 
+                            camera-controls 
+                            shadow-intensity="1.5"
+                            touch-action="pan-y"
+                            exposure="1.0"> <!-- Exposición inicial de luz -->
+                        </model-viewer>
+                    </div>
+                    <div class="project-info">
+                        <h3>Mi Setup (3D Interactivo)</h3>
+                        <p>Modelo low-poly diseñado en Blender con la ruta organizada en <code>/assets/3d/</code>.</p>
+                        
+                        <!-- PANEL DE INTERACCIONES PROGRAMADAS EN JAVASCRIPT -->
+                        <div class="controles-js">
+                            <button id="btn-color" class="control-btn">Cambiar Color Setup 🎨</button>
+                            <button id="btn-luz" class="control-btn">Ajustar Iluminación 💡</button>
+                            <button id="btn-animar" class="control-btn">Animar Rotación 🔄</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- PROYECTO RIVE: Animación Vectorial Interactiva -->
+                <div class="project-card">
+                    <div class="canvas-container">
+                        <canvas id="rive-canvas"></canvas>
+                    </div>
+                    <div class="project-info">
+                        <h3>Interactividad con Rive</h3>
+                        <p>Animación vectorial avanzada integrada mediante el motor de tiempo de ejecución de Rive. Controlada dinámicamente mediante código para responder a las interacciones del usuario.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECCIÓN: Contacto y Redes -->
+        <section id="contact" style="text-align: center;">
+            <h2>Información de Contacto</h2>
+            <p>¿Quieres colaborar en un proyecto? ¡Escríbeme por cualquiera de mis canales activos!</p>
+            <div class="contact-links">
+                <a href="rodro7santos@gmail.com" class="contact-btn">Enviar Email</a>
+                <a href="https://github.com" target="_blank" class="contact-btn alt">GitHub</a>
+                <a href="https://linkedin.com" target="_blank" class="contact-btn">LinkedIn</a>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- ========================================== -->
+    <!-- INTERACCIONES PROGRAMADAS EN JAVASCRIPT    -->
+    <!-- ========================================== -->
+    <script>
+        // 1. INTERACCIONES DEL MODELO 3D (Model-Viewer API)
+        const monitor3D = document.getElementById('modelo-monitor');
+        const btnColor = document.getElementById('btn-color');
+        const btnLuz = document.getElementById('btn-luz');
+        const btnAnimar = document.getElementById('btn-animar');
+
+        // A. Interacción: Cambiar el Color del Setup (Modifica variables CSS en tiempo real)
+        let colorOriginal = true;
+        btnColor.addEventListener('click', () => {
+            const root = document.documentElement;
+            if (colorOriginal) {
+                root.style.setProperty('--neon-cian', '#ff0055'); // Cambia a Rojo Gamer Malvado
+                root.style.setProperty('--neon-purple', '#ffcc00'); // Cambia a Amarillo Neón
+                btnColor.innerText = "Color: Cyberpunk 🔥";
+            } else {
+                root.style.setProperty('--neon-cian', '#00f2fe'); // Vuelve al cian original
+                root.style.setProperty('--neon-purple', '#9b51e0');
+                btnColor.innerText = "Cambiar Color Setup 🎨";
+            }
+            colorOriginal = !colorOriginal;
+        });
+
+        // B. Interacción: Ajuste de Iluminación del Modelo 3D (Modifica la exposición lumínica)
+        let luzAlta = false;
+        btnLuz.addEventListener('click', () => {
+            if (!luzAlta) {
+                monitor3D.setAttribute('exposure', '2.5'); // Sube la potencia de la luz ambiental
+                btnLuz.innerText = "Luz: Modo Brillante ☀️";
+            } else {
+                monitor3D.setAttribute('exposure', '1.0'); // Luz normal
+                btnLuz.innerText = "Ajustar Iluminación 💡";
+            }
+            luzAlta = !luzAlta;
+        });
+
+        // C. Interacción: Animación del Modelo 3D vía código
+        let animando = false;
+        btnAnimar.addEventListener('click', () => {
+            if (!animando) {
+                monitor3D.setAttribute('auto-rotate', ''); // Activa la rotación automática cinematográfica
+                btnAnimar.innerText = "Detener Rotación 🛑";
+            } else {
+                monitor3D.removeAttribute('auto-rotate'); // Detiene la rotación
+                btnAnimar.innerText = "Animar Rotación 🔄";
+            }
+            animando = !animando;
+        });
+
+
+        // 2. INTERACCION: CAMBIO DE TEMA CLARO / OSCURO
+        const btnTema = document.getElementById('btn-tema');
+        const body = document.body;
+
+        btnTema.addEventListener('click', () => {
+            if (body.classList.contains('theme-dark')) {
+                body.classList.remove('theme-dark');
+                body.classList.add('theme-claro');
+                btnTema.innerText = "Modo Oscuro 🌙";
+            } else {
+                body.classList.remove('theme-claro');
+                body.classList.add('theme-dark');
+                btnTema.innerText = "Modo Claro ☀️";
+            }
+        });
+
+
+        // 3. CONFIGURACIÓN RIVE RUNTIME
+        const r = new rive.Rive({
+            src: 'mi_animacion.riv',
+            canvas: document.getElementById('rive-canvas'),
+            autoplay: true,
+            layout: new rive.Layout({
+                fit: rive.Fit.Contain,
+                alignment: rive.Alignment.Center
+            }),
+            onLoad: () => {
+                r.resizeDrawingSurfaceToCanvas();
+            }
+        });
+    </script>
+</body>
+</html>
