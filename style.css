@@ -15,7 +15,7 @@ body.theme-dark {
 }
 
 body.theme-claro {
-    --bg-principal: #f0f2f5;
+    --bg-principal: #f0f2f586;
     --bg-tarjeta: rgba(255, 255, 255, 0.85);
     --texto-principal: #333333;
     --borde-glow: rgba(155, 81, 224, 0.2);

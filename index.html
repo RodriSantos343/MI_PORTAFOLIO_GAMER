@@ -8,7 +8,7 @@
     <!-- Enlace al archivo CSS externo -->
     <link rel="stylesheet" href="style.css">
     
-    <!-- Scripts para Model Viewer (3D) y Rive (Animación) -->
+    <!-- Scripts para Model Viewer (3D) -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
     <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
 </head>
@@ -22,7 +22,7 @@
         <!-- HEADER: Perfil del Alumno -->
         <header>
             <div class="avatar-container">
-                <img src="PERFIL.jpg" alt="Avatar Alumno" class="avatar">
+                <img src="assets/img/PERFIL.jpg" alt="Perfil Alumno" class="avatar">
             </div>
             <h1>RODRIGO DAVID SANTOS CHALE</h1>
             <div class="tag">Developer & 3D Modeler Student</div>
@@ -50,13 +50,13 @@
 
         <!-- SECCIÓN: Proyectos -->
         <section id="projects">
-            <h2>Mi Setup de Proyectos</h2>
+            <h2>Mis Proyectos</h2>
             <div class="projects-grid">
                 
-                <!-- PROYECTO 3D: El Monitor de Blender con Controles JS -->
+                <!-- PROYECTO 3D -->
                 <div class="project-card">
                     <div class="canvas-container">
-                        <!-- src corregido apuntando a la nueva estructura de carpetas -->
+                        
                         <model-viewer 
                             id="modelo-setup"
                             src="assets/3d/SETUP_GAMER.glb" 
@@ -69,7 +69,7 @@
                     </div>
                     <div class="project-info">
                         <h3>Mi Setup (3D Interactivo)</h3>
-                        <p>Modelo low-poly diseñado en Blender con la ruta organizada en <code>/assets/3d/</code>.</p>
+                        <p>Modelo de un setup ideal diseñado en Blender, con texturas añadidas y elementos importados como el mouse, la silla, libros y planta.</p>
                         
                         <!-- PANEL DE INTERACCIONES PROGRAMADAS EN JAVASCRIPT -->
                         <div class="controles-js">
@@ -82,12 +82,13 @@
 
                 <!-- PROYECTO RIVE: Animación Vectorial Interactiva -->
                 <div class="project-card">
-                    <div class="canvas-container">
-                        <canvas id="rive-canvas"></canvas>
-                    </div>
-                    <div class="project-info">
-                        <h3>Interactividad con Rive</h3>
-                        <p>Animación vectorial avanzada integrada mediante el motor de tiempo de ejecución de Rive. Controlada dinámicamente mediante código para responder a las interacciones del usuario.</p>
+                 <div class="canvas-container">
+        
+                    <img src="assets/img/mi_animacion_rive.gif" alt="Animación del Proyecto" style="width: 100%; height: 100%; object-fit: contain;">
+                  </div>
+                  <div class="project-info">
+                        <h3>Inicio de sesión con animación</h3>
+                        <p>Proyecto de una interfaz para inicio de sesión utilizando la herramienta RIVE.</p>
                     </div>
                 </div>
 
@@ -100,8 +101,8 @@
             <p>¿Quieres colaborar en un proyecto? ¡Escríbeme por cualquiera de mis canales activos!</p>
             <div class="contact-links">
                 <a href="rodro7santos@gmail.com" class="contact-btn">Enviar Email</a>
-                <a href="https://github.com" target="_blank" class="contact-btn alt">GitHub</a>
-                <a href="https://linkedin.com" target="_blank" class="contact-btn">LinkedIn</a>
+                <a href="https://github.com/RodriSantos343" target="_blank" class="contact-btn alt">GitHub</a>
+                <a href="https://www.facebook.com/rodri.santos.92754?locale=es_LA" target="_blank" class="contact-btn">Facebook</a>
             </div>
         </section>
 
@@ -176,20 +177,6 @@
             }
         });
 
-
-        // 3. CONFIGURACIÓN RIVE RUNTIME
-        const r = new rive.Rive({
-            src: 'mi_animacion.riv',
-            canvas: document.getElementById('rive-canvas'),
-            autoplay: true,
-            layout: new rive.Layout({
-                fit: rive.Fit.Contain,
-                alignment: rive.Alignment.Center
-            }),
-            onLoad: () => {
-                r.resizeDrawingSurfaceToCanvas();
-            }
-        });
     </script>
 </body>
 </html>
