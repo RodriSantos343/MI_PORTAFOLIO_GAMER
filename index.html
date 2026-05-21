@@ -10,7 +10,6 @@
     
     <!-- Scripts para Model Viewer (3D) -->
     <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
-    <script src="https://unpkg.com/@rive-app/canvas@2.7.0"></script>
 </head>
 <body class="theme-dark"> <!-- Clase inicial para el tema oscuro -->
 
@@ -19,7 +18,7 @@
 
     <div class="portfolio-container">
 
-        <!-- HEADER: Perfil del Alumno -->
+        <!-- Perfil del Alumno -->
         <header>
             <div class="avatar-container">
                 <img src="assets/img/PERFIL.jpg" alt="Perfil Alumno" class="avatar">
@@ -100,7 +99,7 @@
             <h2>Información de Contacto</h2>
             <p>¿Quieres colaborar en un proyecto? ¡Escríbeme por cualquiera de mis canales activos!</p>
             <div class="contact-links">
-                <a href="rodro7santos@gmail.com" class="contact-btn">Enviar Email</a>
+                <a href="mailto:rodro7santos@gmail.com" class="contact-btn">Enviar Email</a>
                 <a href="https://github.com/RodriSantos343" target="_blank" class="contact-btn alt">GitHub</a>
                 <a href="https://www.facebook.com/rodri.santos.92754?locale=es_LA" target="_blank" class="contact-btn">Facebook</a>
             </div>
@@ -109,11 +108,11 @@
     </div>
 
     <!-- ========================================== -->
-    <!-- INTERACCIONES PROGRAMADAS EN JAVASCRIPT    -->
+    <!-- INTERACCIONES EN JAVASCRIPT -->
     <!-- ========================================== -->
     <script>
         // 1. INTERACCIONES DEL MODELO 3D (Model-Viewer API)
-        const monitor3D = document.getElementById('modelo-monitor');
+        const monitor3D = document.getElementById('modelo-setup');
         const btnColor = document.getElementById('btn-color');
         const btnLuz = document.getElementById('btn-luz');
         const btnAnimar = document.getElementById('btn-animar');
