@@ -45,10 +45,10 @@ mi-portafolio/
 │   │   └── monitor_interactivo.glb   <-- 3D Model exported from Blender
 │   └── img/
 │       └── mi-foto.jpg               <-- Student profile picture
+│       └── rive-gif.jpg
 │
 ├── index.html                        <-- Main HTML structure and JavaScript logic
 ├── style.css                         <-- Custom styling (Gamer theme & RGB palette)
-└── mi_animacion.riv                  <-- Interactive Rive animation file
 🏫 Academic Context
 📚 Course/Subject: Computer Graphics (Graficación)
 
