@@ -74,6 +74,7 @@
                         <div class="controles-js">
                             <button id="btn-luz" class="control-btn">Ajustar Iluminación 💡</button>
                             <button id="btn-animar" class="control-btn">Animar Rotación 🔄</button>
+                            <button id="btn-fullscreen" class="control-btn">Ver Pantalla Completa ⛶</button>
                         </div>
                     </div>
                 </div>
@@ -114,8 +115,9 @@
         const monitor3D = document.getElementById('modelo-setup');
         const btnLuz = document.getElementById('btn-luz');
         const btnAnimar = document.getElementById('btn-animar');
+        const btnFullscreen = document.getElementById('btn-fullscreen');
 
-        // B. Interacción: Ajuste de Iluminación del Modelo 3D (Modifica la exposición lumínica)
+        // A. Interacción: Ajuste de Iluminación del Modelo 3D (Modifica la exposición lumínica)
         let luzAlta = false;
         btnLuz.addEventListener('click', () => {
             if (!luzAlta) {
@@ -128,7 +130,7 @@
             luzAlta = !luzAlta;
         });
 
-        // C. Interacción: Animación del Modelo 3D vía código
+        // B. Interacción: Animación del Modelo 3D vía código
         let animando = false;
         btnAnimar.addEventListener('click', () => {
             if (!animando) {
@@ -141,6 +143,25 @@
             animando = !animando;
         });
 
+        // C. Visualización de Pantalla Completa
+        btnFullscreen.addEventListener('click',()=>{
+            if(!document.fullscreenElement){
+               monitor3D.requestFullscreen();
+            }else{
+        document.exitFullscreen();
+        }
+     });
+document.addEventListener(
+'fullscreenchange',
+()=>{
+    if(document.fullscreenElement){
+        btnFullscreen.innerText=
+        "Salir Pantalla Completa ❌";
+    }else{
+        btnFullscreen.innerText=
+        "Ver Pantalla Completa ⛶";
+    }
+});
 
         // 2. INTERACCION: CAMBIO DE TEMA CLARO / OSCURO
         const btnTema = document.getElementById('btn-tema');

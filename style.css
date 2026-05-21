@@ -15,7 +15,7 @@ body.theme-dark {
 }
 
 body.theme-claro {
-    --bg-principal: #f0f2f552;
+    --bg-principal: #f0f2f58a;
     --bg-tarjeta: rgba(255, 255, 255, 0.85);
     --texto-principal: #333333;
     --borde-glow: rgba(155, 81, 224, 0.2);
@@ -242,3 +242,9 @@ body.theme-claro .contact-btn:hover { color: #fff; }
 
 .contact-btn.alt { border-color: var(--neon-cian); }
 .contact-btn.alt:hover { background: var(--neon-cian); color: #000; }
+
+model-viewer:fullscreen{
+    width:100vw;
+    height:100vh;
+    background:#000;
+}
